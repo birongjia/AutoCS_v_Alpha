@@ -7,9 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.List;
 
 @Controller
@@ -18,6 +21,7 @@ public class YardController extends BaseController {
     @Autowired
     private YardmanagementService yardmanagementService;
 
+    //添加教师帐号
     @RequestMapping("/user/add")
     public String add(HttpServletRequest request, HttpServletResponse response){
         String userName = request.getParameter("userName");
@@ -42,7 +46,9 @@ public class YardController extends BaseController {
             return "redirect:/yard/success.html";
         }
     }
-    @RequestMapping(value = "/user/find")
+
+    //查询教师帐号信息
+    @RequestMapping("/user/find")
     public String find(HttpServletRequest request, HttpServletResponse response){
         String department = request.getParameter("department");
         String userName = request.getParameter("userName");
@@ -69,9 +75,31 @@ public class YardController extends BaseController {
 
     // 删除教师信息
     @RequestMapping(value="/user/{id}/delete", method = RequestMethod.DELETE)
-    public String deleteTeacher(@PathVariable Integer id) {
+    public String deleteTeacher(@PathVariable Integer id, HttpServletRequest request) {
         yardmanagementService.removeTeacher(id);
-        String targetUrl = "/yard/find.html";
+        String targetUrl = "/yard/user.html";
         return "redirect:"+targetUrl;
+    }
+
+    //导入教师表格
+    @RequestMapping("/user/upload")
+    public String uploadAndImport(@RequestParam("file") MultipartFile file, HttpServletRequest request)throws Exception{
+        if(file.isEmpty()){
+            request.setAttribute("errorMsg", "不能为空");
+            return "yard/yardUser";
+        }
+        String originalFileName = file.getOriginalFilename();
+        if(!originalFileName.endsWith(".xls") && !originalFileName.endsWith(".XLS")
+                && !originalFileName.endsWith(".xlsx") && !originalFileName.endsWith(".XLSX")){
+            request.setAttribute("errorMsg", "上传文件的格式不正确");
+            return "yard/yardUser";
+        }
+        String fileName = request.getSession().getServletContext().getRealPath("/") + "uploads/temp/"
+                + originalFileName;
+        File tempFile = new File(fileName);
+        file.transferTo(tempFile);
+        yardmanagementService.importTeacherUser(fileName);
+        tempFile.delete();
+        return "redirect:/yard/success.html";
     }
 }

@@ -19,7 +19,7 @@ public class TeacherController extends BaseController {
 
     @RequestMapping("/doCourse")
     public String doTeacherCourse(HttpServletRequest request, HttpServletResponse response){
-        Teacher teacher = (Teacher)request.getSession().getAttribute("loginTeacher");
+        Teacher teacher = (Teacher)request.getSession().getAttribute("loginUser");
         if(teacher == null || teacher.getTeacherDepartment().isEmpty()){
             request.setAttribute("errorMsg1", "您还未属于任何系，暂时无法选课");
             return "teacher/teacherMain";

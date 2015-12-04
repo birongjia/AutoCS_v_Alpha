@@ -17,7 +17,7 @@ public class YardJumpController extends BaseController {
     }
 
     @RequestMapping("/user")
-    public String yardUser(){
+    public String yardUser(HttpServletRequest request, HttpServletResponse response){
         return "yard/yardUser";
     }
 
