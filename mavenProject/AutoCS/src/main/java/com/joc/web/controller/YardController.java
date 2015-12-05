@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -28,7 +29,7 @@ public class YardController extends BaseController {
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         String department = request.getParameter("department");
-        if(userName.isEmpty() || name.isEmpty() || password.isEmpty() || department.isEmpty()) {
+        if (userName.isEmpty() || name.isEmpty() || password.isEmpty() || department.isEmpty()) {
             request.setAttribute("errorMsg1", "不能为空");
             return "forward:/yard/user.html";
         }
@@ -52,13 +53,13 @@ public class YardController extends BaseController {
     public String find(HttpServletRequest request, HttpServletResponse response){
         String department = request.getParameter("department");
         String userName = request.getParameter("userName");
-        if(department.isEmpty() && userName.isEmpty()){
+        if (department.isEmpty() && userName.isEmpty()){
             request.setAttribute("errorMsg2", "不能为空");
             return "yard/yardUser";
         }
         String[] param = {department, userName, ""};
         List<Teacher> teachers = yardmanagementService.queryTeacherUserByMoreConditions(param);
-        if(teachers.isEmpty()){
+        if (teachers.isEmpty()){
             request.setAttribute("resultMsg1", "没有找到符合条件的教师");
         }
         request.setAttribute("teacher", teachers);
@@ -83,13 +84,13 @@ public class YardController extends BaseController {
 
     //导入教师表格
     @RequestMapping("/user/upload")
-    public String uploadAndImport(@RequestParam("file") MultipartFile file, HttpServletRequest request)throws Exception{
-        if(file.isEmpty()){
+    public String uploadAndImportTeacher(@RequestParam("file") MultipartFile file, HttpServletRequest request)throws Exception{
+        if (file.isEmpty()){
             request.setAttribute("errorMsg", "不能为空");
             return "yard/yardUser";
         }
         String originalFileName = file.getOriginalFilename();
-        if(!originalFileName.endsWith(".xls") && !originalFileName.endsWith(".XLS")
+        if (!originalFileName.endsWith(".xls") && !originalFileName.endsWith(".XLS")
                 && !originalFileName.endsWith(".xlsx") && !originalFileName.endsWith(".XLSX")){
             request.setAttribute("errorMsg", "上传文件的格式不正确");
             return "yard/yardUser";
@@ -102,4 +103,36 @@ public class YardController extends BaseController {
         tempFile.delete();
         return "redirect:/yard/success.html";
     }
+
+    //导入课程表格
+    @RequestMapping("/course/upload")
+    public String importCourses(@RequestParam("file") MultipartFile file, HttpServletRequest request)throws Exception{
+        String semester = request.getParameter("semester");
+        if (file.isEmpty() || semester.equals("0")){
+            request.setAttribute("errorMsg1", "不能为空");
+            return "yard/yardCourse";
+        }
+        String originalFileName = file.getOriginalFilename();
+        if (!originalFileName.endsWith(".xls") && !originalFileName.endsWith(".XLS")
+                && !originalFileName.endsWith(".xlsx") && !originalFileName.endsWith(".XLSX")){
+            request.setAttribute("errorMsg1", "上传文件的格式不正确");
+            return "yard/yardCourse";
+        }
+        int periodId = Calendar.getInstance().get(Calendar.YEAR);
+        String pId = Integer.toString(periodId);
+        if (semester.equals("1")){
+            pId += "01";
+        }
+        if (semester.equals("2")){
+            pId += "02";
+        }
+        String fileName = request.getSession().getServletContext().getRealPath("/") + "uploads/temp/"
+                + originalFileName;
+        File tempFile = new File(fileName);
+        file.transferTo(tempFile);
+        yardmanagementService.importCourse(fileName, pId);
+        tempFile.delete();
+        return "redirect:/yard/success.html";
+    }
+
 }

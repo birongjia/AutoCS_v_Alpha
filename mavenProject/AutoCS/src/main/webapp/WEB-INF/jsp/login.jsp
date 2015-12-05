@@ -50,7 +50,7 @@
         </c:if>
         <form action="${context}/login.html" method="post">
             <div id=type1><label>用户名：<input type="text" name="userName"></label></div>
-            <div id=type2><label>密  码：<input type="password" name="password"></label></div>
+            <div id=type2><label>密　码：<input type="password" name="password"></label></div>
             <label><input id="userType1" name="userType" type="radio" value="1" checked="checked"/>教学办</label>&nbsp
             <label><input id="userType2" name="userType" type="radio" value="2"/>系负责人</label>&nbsp
             <label><input id="userType3" name="userType" type="radio" value="3"/>教师</label>

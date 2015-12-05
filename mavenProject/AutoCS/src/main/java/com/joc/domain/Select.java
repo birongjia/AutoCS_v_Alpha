@@ -8,22 +8,22 @@ public class Select extends BaseDomain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
-    protected int selId;
+    private int selId;
 
     @Column(name = "courseid")
-    protected int courseId;
+    private int courseId;
 
     @Column(name = "time")
-    protected String courseTime;    //起讫周序
+    private String courseTime;    //起讫周序
 
     @Column(name = "teachername")
-    protected String teacherName;
+    private String teacherName;
 
     @Column(name = "coursename")
-    protected String courseName;
+    private String courseName;
 
     @Column(name = "message")
-    protected String message;       //备注
+    private String message;       //备注
 
     public int getSelId() {
         return selId;

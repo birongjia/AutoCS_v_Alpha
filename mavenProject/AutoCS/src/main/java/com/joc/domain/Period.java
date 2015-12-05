@@ -9,16 +9,16 @@ public class Period extends BaseDomain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
-    protected int perId;
+    private int perId;
 
     @Column(name = "periodid")
-    protected int periodId;
+    private int periodId;
 
     @Column(name = "starttime")
-    protected Date startTime;       //报课开始时间
+    private Date startTime;       //报课开始时间
 
     @Column(name = "deadline")
-    protected Date deadLine;        //报课截止时间
+    private Date deadLine;        //报课截止时间
 
     public int getPerId() {
         return perId;

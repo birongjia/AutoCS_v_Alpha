@@ -1,3 +1,4 @@
+<%@ page import="java.util.Calendar" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -61,9 +62,20 @@
         &nbsp;<input type="submit" name="button" value="查看报课"/>
     </div>
     <div id=button2>
-        <input type="submit" name="button" value="导入课表"/>
-        <input type="submit" name="button" value="导入预览"/>
-        <input type="submit" name="button" value="确定"/>
+        <br/>
+        <c:if test="${empty errorMsg1}"><br/></c:if>
+        <c:if test="${!empty errorMsg1}">
+            <div style="color:red">${errorMsg1}</div>
+        </c:if>
+        <form action="${context}/yard/course/upload.html" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" value="导入课表"/>
+            <label>选择学期：<select name="semester">
+                <option value="0" selected="selected">选择</option>
+                <option value="1" id="1"><%=Calendar.getInstance().get(Calendar.YEAR)%>01</option>
+                <option value="2" id="2"><%=Calendar.getInstance().get(Calendar.YEAR)%>02</option>
+            </select></label>
+            <input type="submit" value="确  定"/>
+        </form>
     </div>
     <div id=sth>
         <img src="http://t04.pic.sogou.com/02180dee779e8a8c-c6d81a1366188f77-b687d8000eb0132f4db7ec0ce3773c39.jpg" width="70"
@@ -71,14 +83,14 @@
         <a>开始/截止报课设置</a>
     </div>
     <div id=time>
-        <form id="form">
-            <label>开始报课：<input name="bk" type="date"/></label><br/><br/>
-            <label>截止报课：<input name="bk" type="date"/></label><br/><br/>
-            <label>开始审核：<input name="bk" type="date"/></label><br/><br/>
-            <label>审核截止：<input name="bk" type="date"/></label><br/><br/>
-        </form>
+        <form id="form" action="${context}/yard/course/setTime.html" method="post">
+            <label>开始报课：<input name="beginCourse" type="date"/></label><br/><br/>
+            <label>截止报课：<input name="endCourse" type="date"/></label><br/><br/>
+            <label>开始审核：<input name="beginCheck" type="date"/></label><br/><br/>
+            <label>审核截止：<input name="endCheck" type="date"/></label><br/><br/>
         <input  type="submit" value="确定"/>&nbsp;&nbsp;
         <input type="reset" value="重置"/>
+        </form>
     </div>
     <div id=time1>
         <img src="http://t03.pic.sogou.com/02180dee779e8a8c-9a2dfd51a14e3358-3bc24e914a3291e6ecba8a76c5e5bac1.jpg"/>

@@ -8,22 +8,22 @@ public class Departmanagement extends BaseDomain{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
-    protected int departId;
+    private int departId;
 
     @Column(name = "user_name")
-    protected String departUserName;
+    private String departUserName;
 
     @Column(name = "password")
-    protected String departPassword;
+    private String departPassword;
 
     @Column(name = "department")
-    protected String departDepartment;
+    private String departDepartment;
 
     @Column(name = "name")
-    protected String departName;
+    private String departName;
 
     @Column(name = "telephone")
-    protected String departTelephone;
+    private String departTelephone;
 
     public int getDepartId() {
         return departId;

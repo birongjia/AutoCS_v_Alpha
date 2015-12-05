@@ -8,19 +8,19 @@ public class Yardmanagement extends BaseDomain{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
-    protected int yardId;
+    private int yardId;
 
     @Column(name = "user_name")
-    protected String yardUserName;
+    private String yardUserName;
 
     @Column(name = "password")
-    protected String yardPassword;
+    private String yardPassword;
 
     @Column(name = "name")
-    protected String yardName;
+    private String yardName;
 
     @Column(name = "telephone")
-    protected String yardTelephone;
+    private String yardTelephone;
 
     public int getYardId() {
         return yardId;

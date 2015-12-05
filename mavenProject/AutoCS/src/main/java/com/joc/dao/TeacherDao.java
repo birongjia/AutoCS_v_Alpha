@@ -33,6 +33,7 @@ public class TeacherDao extends BaseDao<Teacher> {
         if (!conditions[2].isEmpty()){
             hql = hql + " and t.teacherName = '"+conditions[2]+"' ";
         }
+        hql += " order by t.teacherUserName asc ";
         return (List<Teacher>)find(hql);
     }
 }

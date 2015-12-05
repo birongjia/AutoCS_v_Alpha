@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>操作成功</title>
     <script language=javascript>
-        setTimeout("window.location.href='../yard/user.html'",2000)
+        setTimeout("window.history.go(-1);",2000)
     </script>
 </head>
 <body>

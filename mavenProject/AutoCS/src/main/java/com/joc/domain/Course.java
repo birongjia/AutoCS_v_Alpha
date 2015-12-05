@@ -8,41 +8,45 @@ public class Course extends BaseDomain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
-    protected int couId;
+    private int courseId;
 
     @Column(name = "coursename")
-    protected String courseName;
+    private String courseName;
 
     @Column(name = "coursegrade")
-    protected int courseGrade;
+    private int courseGrade;
 
     @Column(name = "coursemajor")
-    protected String courseMajor;
+    private String courseMajor;
 
     @Column(name = "coursepeople")
-    protected int coursePeople;
+    private int coursePeople;
 
     @Column(name = "coursescore")
-    protected float courseScore;
+    private float courseScore;
 
     @Column(name = "coursehour")
-    protected int courseHour;
+    private String courseHour;
 
     @Column(name = "testhour")
-    protected int testHour;     //实验学时
+    private String testHour;     //实验学时
 
     @Column(name = "practicehour")
-    protected int practiceHour;     //上机学时
+    private String practiceHour;     //上机学时
 
     @Column(name = "periodid")
-    protected int periodId;
+    private String periodId;
 
-    public int getCouId() {
-        return couId;
+    @Column(name = "coursetype")
+    private String courseType;
+
+    @Column(updatable = false)
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCouId(int couId) {
-        this.couId = couId;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public String getCourseName() {
@@ -85,36 +89,44 @@ public class Course extends BaseDomain {
         this.courseScore = courseScore;
     }
 
-    public int getCourseHour() {
+    public String getCourseHour() {
         return courseHour;
     }
 
-    public void setCourseHour(int courseHour) {
+    public void setCourseHour(String courseHour) {
         this.courseHour = courseHour;
     }
 
-    public int getTestHour() {
+    public String getTestHour() {
         return testHour;
     }
 
-    public void setTestHour(int testHour) {
+    public void setTestHour(String testHour) {
         this.testHour = testHour;
     }
 
-    public int getPracticeHour() {
+    public String getPracticeHour() {
         return practiceHour;
     }
 
-    public void setPracticeHour(int practiceHour) {
+    public void setPracticeHour(String practiceHour) {
         this.practiceHour = practiceHour;
     }
 
-    public int getPeriodId() {
+    public String getPeriodId() {
         return periodId;
     }
 
-    public void setPeriodId(int periodId) {
+    public void setPeriodId(String periodId) {
         this.periodId = periodId;
+    }
+
+    public String getCourseType() {
+        return courseType;
+    }
+
+    public void setCourseType(String courseType) {
+        this.courseType = courseType;
     }
 
 }

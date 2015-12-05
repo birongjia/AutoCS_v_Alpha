@@ -9,32 +9,33 @@ public class Teacher extends BaseDomain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
-    protected int teacherId;
+    private int teacherId;
 
     @Column(name = "user_name")
-    protected String teacherUserName;
+    private String teacherUserName;
 
     @Column(name = "password")
-    protected String teacherPassword;
+    private String teacherPassword;
 
     @Column(name = "name")
-    protected String teacherName;
+    private String teacherName;
 
     @Column(name = "department")           //所属系
-    protected String teacherDepartment;
+    private String teacherDepartment;
 
     @Column(name = "email")
-    protected String teacherEmail;
+    private String teacherEmail;
 
     @Column(name = "telephone")
-    protected String teacherTelephone;
+    private String teacherTelephone;
 
     @Column(name = "sex")
-    protected String teacherSex;
+    private String teacherSex;
 
     @Column(name = "birthday")
-    protected Date teacherBirthday;
+    private Date teacherBirthday;
 
+    @Column(updatable = false)
     public int getTeacherId() {
         return teacherId;
     }

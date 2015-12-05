@@ -8,16 +8,16 @@ public class Check extends BaseDomain {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
-    protected int cheId;
+    private int cheId;
 
     @Column(name = "situation")
-    protected int situation;    //审核状态
+    private int situation;    //审核状态
 
     @Column(name = "periodid")
-    protected int periodId;     //学期标号
+    private int periodId;     //学期标号
 
     @Column(name = "major")
-    protected String major;
+    private String major;
 
     public int getCheId() {
         return cheId;
