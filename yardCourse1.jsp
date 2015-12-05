@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <style type="text/css">
+	
         #header{width: 100%;}/*设置满屏宽度*/
         /*设置顶部栏效果*/
         #info{height: 30px;background-color:#CCC;text-align:right;padding-top:5px;}
@@ -26,17 +27,17 @@
         /*系统名称效果*/
         #logo{padding: 10px 0 0 0; text-align: center; height: 50px;background-color:#69C;font-size: 40px;font-family:"隶书";color:#FFC;}
         /*系名称栏设置*/
-        #major{width:15%;height:400px;padding:25px 0 0 0;text-align:center;background-color:#EAEAEA;float:left;margin: auto;border: 1px         solid #cccccc;}
+        #major{width:15%;height:400px;padding:25px 0 0 0;text-align:center;background-color:#EAEAEA;float:left;margin: auto;border: 2px         solid #cccccc;border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}
         #major a{font-size:16px;}
         #major a:hover{color:#F06;}
         /*设置按钮安放位置*/
-        #button1{width:40%;height:50px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;}
+        #button1{width:60%;height:50px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;}
         #button1 input{margin-left:50px;}
         #button2{width:60%;height:50px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;border-top:2px solid #9FF;}
         #button2 input{margin-left:50px;}
         /*暂时放空的地方*/
-        #sth{width:60%;height:60px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;}
-        #sth a{font-size:20px;font-family:Arial;padding:10px 100px 0 0;}
+        #sth{width:60%;height:60px;padding:50px 0 20px 50px;text-align:left;float:left;margin:auto;}
+        #sth a{font-size:20px;font-family:Arial;}
         /*放置时间选择框*/
         #time{width:30%;height:250px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;}
         #time1{width:20%;height:100px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;}
@@ -47,7 +48,7 @@
 </head>
 <body>
 <div id="header">
-    <%@ include file="yardTop.jsp"%>
+    <%@ include file="../yardTop.jsp"%>
     <div id="major">
         <a href="#">计 算 机 科 学 与 技 术</a><br/><br/>
         <a href="#">数 学</a><br/><br/>
@@ -59,15 +60,22 @@
     </div>
     <br/>
     <div>
-        <form action="${context}/yard/course/start.html" method="post" enctype="multipart/form-data">
+        <form action="../${context}/yard/course/start.html" method="post" enctype="multipart/form-data">
+          
             <div id="button1">
+              <div style="float: left">
+                <input type="submit" style="background:#9CF" value="开始报课"/>
+            </div>
+                <div style="float: left">
+                <input type="submit" style="background:#9CF" value="查看报课"/>
+            </div>
                 <br/>
                 <c:if test="${empty errorMsg1}"><br/></c:if>
                 <c:if test="${!empty errorMsg1}">
                     <div style="color:red">${errorMsg1}</div>
                 </c:if>
                 <label>选择学期：<select name="semester">
-                    <option value="0" selected="selected">选择</option>
+                    <option value="0" selected="selected" >选择</option>
                     <option value="1" id="1"><%=Calendar.getInstance().get(Calendar.YEAR)%>01</option>
                     <option value="2" id="2"><%=Calendar.getInstance().get(Calendar.YEAR)%>02</option>
                 </select></label>
@@ -75,8 +83,8 @@
             </div>
             <br>
             <div id=sth>
-                <img src="http://t04.pic.sogou.com/02180dee779e8a8c-c6d81a1366188f77-b687d8000eb0132f4db7ec0ce3773c39.jpg" width="70" height="70"/>
-                <a>开始/截止报课设置</a>
+
+                <a> <img src="http://t04.pic.sogou.com/02180dee779e8a8c-c6d81a1366188f77-b687d8000eb0132f4db7ec0ce3773c39.jpg" width="70" height="70"/>开始/截止报课设置</a>
             </div>
             <br>
             <div id=time>
@@ -84,16 +92,12 @@
                 <label>截止报课：<input name="endCourse" type="date"/></label><br/><br/>
                 <label>开始审核：<input name="beginCheck" type="date"/></label><br/><br/>
                 <label>审核截止：<input name="endCheck" type="date"/></label><br/><br/>
-                <input type="reset" value="重置"/>
+                <input style="background:#9CF" type="reset" value="重置"/>
             </div>
-            <div style="float: left">
-                <input type="submit" value="开始报课"/>
-            </div>
+           
         </form>
 
-            <div style="float: left">
-                <input type="submit" value="查看报课"/>
-            </div>
+        
         </div>
 </div>
     <div id=time1>
