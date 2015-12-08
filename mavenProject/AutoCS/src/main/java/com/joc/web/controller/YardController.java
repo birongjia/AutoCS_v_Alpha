@@ -1,5 +1,6 @@
 package com.joc.web.controller;
 
+import com.joc.domain.Period;
 import com.joc.domain.Teacher;
 import com.joc.service.YardmanagementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.util.Calendar;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -44,7 +47,7 @@ public class YardController extends BaseController {
             teacher.setTeacherPassword(password);
             teacher.setTeacherDepartment(department);
             yardmanagementService.saveTeacherUser(teacher);
-            return "redirect:/yard/success.html";
+            return "redirect:/yard/userSuccess.html";
         }
     }
 
@@ -97,42 +100,110 @@ public class YardController extends BaseController {
         }
         String fileName = request.getSession().getServletContext().getRealPath("/") + "uploads/temp/"
                 + originalFileName;
-        File tempFile = new File(fileName);
-        file.transferTo(tempFile);
-        yardmanagementService.importTeacherUser(fileName);
-        tempFile.delete();
-        return "redirect:/yard/success.html";
+        file.transferTo(new File(fileName));
+        yardmanagementService.saveTeacherUsersFromExcel(fileName);
+        return "redirect:/yard/userSuccess.html";
     }
 
-    //导入课程表格
-    @RequestMapping("/course/upload")
-    public String importCourses(@RequestParam("file") MultipartFile file, HttpServletRequest request)throws Exception{
-        String semester = request.getParameter("semester");
-        if (file.isEmpty() || semester.equals("0")){
-            request.setAttribute("errorMsg1", "不能为空");
+    //开始选课
+    @RequestMapping("/course/start")
+    public String importAndStartCourse(@RequestParam("files") MultipartFile[] files, HttpServletRequest request)throws Exception{
+        if (files == null){
+            request.setAttribute("errorMsg1", "未选择要导入的表格");
             return "yard/yardCourse";
         }
+        if (files.length != 8){
+            request.setAttribute("errorMsg1", "还有未选择导入表格的专业");
+            return "yard/yardCourse";
+        }
+
+        String semester = request.getParameter("semester");
+        if (semester.equals("0")){
+            request.setAttribute("errorMsg1", "未选择学期");
+            return "yard/yardCourse";
+        }
+        if (yardmanagementService.queryPeriodId(semester) != null){
+            request.setAttribute("errorMsg1", "该学期已经开始报课");
+            return "yard/yardCourse";
+        }
+
+        String beginCourse = request.getParameter("beginCourse");
+        String endCourse = request.getParameter("endCourse");
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
+        if (beginCourse.isEmpty() || endCourse.isEmpty()){
+            request.setAttribute("errorMsg2", "时间未填写完整");
+            return "yard/yardCourse";
+        }
+        if (beginCourse.compareTo(endCourse) > 0){
+            request.setAttribute("errorMsg2", "截止时间不能在开始时间之前");
+            return "yard/yardCourse";
+        }
+        if (currentDate.compareTo(beginCourse) > 0){
+            request.setAttribute("errorMsg2", "开始报课时间不能在今天之前");
+            return "yard/yardCourse";
+        }
+
+        String filePath = request.getSession().getServletContext().getRealPath("/") + "uploads/temp/";
+        List<String> fileNames = new ArrayList<String>();
+        for (MultipartFile file : files) {
+            String fileName = saveFile(file, filePath);
+            if (fileName.equals("1")){
+                deleteFile(fileName);
+                request.setAttribute("errorMsg1", "还有未选择导入表格的专业");
+                return "yard/yardCourse";
+            }
+            if (fileName.equals("2")){
+                deleteFile(fileName);
+                request.setAttribute("errorMsg1", "上传文件的格式不正确");
+                return "yard/yardCourse";
+            }
+            fileNames.add(fileName);
+        }
+
+        Period period = new Period();
+        Date beginCourseDate =  Date.valueOf(beginCourse);
+        Date endCourseDate =  Date.valueOf(endCourse);
+        period.setPeriodId(semester);
+        period.setStartTime(beginCourseDate);
+        period.setDeadLine(endCourseDate);
+
+        yardmanagementService.saveCoursesAndPeriod(fileNames, period);
+
+        return "redirect:/yard/courseSuccess.html";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private String saveFile(MultipartFile file, String filePath) throws Exception {
         String originalFileName = file.getOriginalFilename();
+        if (file.isEmpty()){
+            return "1";//文件为空
+        }
         if (!originalFileName.endsWith(".xls") && !originalFileName.endsWith(".XLS")
                 && !originalFileName.endsWith(".xlsx") && !originalFileName.endsWith(".XLSX")){
-            request.setAttribute("errorMsg1", "上传文件的格式不正确");
-            return "yard/yardCourse";
+            return "2";//文件格式不正确
         }
-        int periodId = Calendar.getInstance().get(Calendar.YEAR);
-        String pId = Integer.toString(periodId);
-        if (semester.equals("1")){
-            pId += "01";
-        }
-        if (semester.equals("2")){
-            pId += "02";
-        }
-        String fileName = request.getSession().getServletContext().getRealPath("/") + "uploads/temp/"
-                + originalFileName;
-        File tempFile = new File(fileName);
-        file.transferTo(tempFile);
-        yardmanagementService.importCourse(fileName, pId);
-        tempFile.delete();
-        return "redirect:/yard/success.html";
+        String fileName = filePath + originalFileName;
+        file.transferTo(new File(fileName));
+        return fileName;
+    }
+
+    private void deleteFile(String fileName){
+        File file = new File(fileName);
+        file.delete();
     }
 
 }

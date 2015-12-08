@@ -25,6 +25,7 @@ public class Select extends BaseDomain {
     @Column(name = "message")
     private String message;       //备注
 
+    @Column(updatable = false)
     public int getSelId() {
         return selId;
     }

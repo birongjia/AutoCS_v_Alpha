@@ -25,6 +25,7 @@ public class Departmanagement extends BaseDomain{
     @Column(name = "telephone")
     private String departTelephone;
 
+    @Column(updatable = false)
     public int getDepartId() {
         return departId;
     }

@@ -20,7 +20,12 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 
+    <!--<mvc:annotation-driven />-->
+
+    <!--静态资源访问-->
+    <!--<mvc:default-servlet-handler/>-->
     <mvc:resources mapping="/res/**" location="/res/" />
+
     <!-- 配置视图解析器，将ModelAndView及字符串解析为具体的页面 -->
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver"

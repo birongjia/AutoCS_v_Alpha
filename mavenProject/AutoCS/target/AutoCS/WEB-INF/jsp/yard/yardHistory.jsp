@@ -44,13 +44,13 @@
 <div id="header">
     <%@ include file="yardTop.jsp"%>
     <div id="major">
-        <a href="#">计算机科学与技术</a><br/><br/>
-        <a href="#">数          学</a><br/><br/>
-        <a href="#">信  息  安   全</a><br/><br/>
-        <a href="#">软  件  工   程</a><br/><br/>
+        <a href="#">计 算 机 科 学 与 技 术</a><br/><br/>
+        <a href="#">数 学</a><br/><br/>
+        <a href="#">信 息 安 全</a><br/><br/>
+        <a href="#">软 件 工 程</a><br/><br/>
         <a href="#">计 算 机 实 验 班</a><br/><br/>
-        <a href="#">数 学  实 验 班 </a><br/><br/>
-        <a href="#">数 理  综 合 班</a><br/><br/>
+        <a href="#">数 学 实 验 班</a><br/><br/>
+        <a href="#">数 理 综 合 班</a><br/><br/>
     </div>
     <div id=button1>
         <input type="submit" name="button" value="显示最新记录"/>

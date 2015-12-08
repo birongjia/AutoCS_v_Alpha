@@ -1,7 +1,7 @@
 package com.joc.domain;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name = "period")
@@ -12,7 +12,7 @@ public class Period extends BaseDomain {
     private int perId;
 
     @Column(name = "periodid")
-    private int periodId;
+    private String periodId;
 
     @Column(name = "starttime")
     private Date startTime;       //报课开始时间
@@ -20,6 +20,7 @@ public class Period extends BaseDomain {
     @Column(name = "deadline")
     private Date deadLine;        //报课截止时间
 
+    @Column(updatable = false)
     public int getPerId() {
         return perId;
     }
@@ -28,11 +29,11 @@ public class Period extends BaseDomain {
         this.perId = perId;
     }
 
-    public int getPeriodId() {
+    public String getPeriodId() {
         return periodId;
     }
 
-    public void setPeriodId(int periodId) {
+    public void setPeriodId(String periodId) {
         this.periodId = periodId;
     }
 

@@ -22,6 +22,7 @@ public class Yardmanagement extends BaseDomain{
     @Column(name = "telephone")
     private String yardTelephone;
 
+    @Column(updatable = false)
     public int getYardId() {
         return yardId;
     }

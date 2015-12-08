@@ -30,6 +30,14 @@ public class LoginController extends BaseController{
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         String userType = request.getParameter("userType");
+        if (userName.isEmpty()){
+            request.setAttribute("errorMsg", "用户名不能为空");
+            return "login";
+        }
+        if (password.isEmpty()){
+            request.setAttribute("errorMsg", "密码不能为空");
+            return "login";
+        }
         if(userType.equals("1")) {
             Yardmanagement yardmanagement = yardmanagementService.queryUserByUserName(userName);
             if (yardmanagement == null) {

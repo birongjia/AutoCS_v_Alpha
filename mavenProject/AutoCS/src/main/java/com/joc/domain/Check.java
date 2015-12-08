@@ -19,6 +19,7 @@ public class Check extends BaseDomain {
     @Column(name = "major")
     private String major;
 
+    @Column(updatable = false)
     public int getCheId() {
         return cheId;
     }

@@ -8,31 +8,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="../res/css/style/top.css" rel="stylesheet" type="text/css"/>
     <style type="text/css">
-        #header{width: 100%;}/*设置满屏宽度*/
-        /*设置顶部栏效果*/
-        #info{height: 30px;background-color:#CCC;text-align:right;padding-top:5px;}
-        #nav-search{padding:5px 0 0 0;height: 30px;background-color:#9CF;}
-        #nav{height: 30px;background-color:#9CF;float: left;}
-        /*设置字体样式*/
-        #nav a{font-size:14px;display:block; float:left; margin-left:20px; margin-top:6px;color:#fff;letter-spacing:0.2em;
-            text-align:center;text-decoration:none;}
-        /*搜索框*/
-        #search{height: 30px;background-color:#9CF;float: right;}
-        /*系统名称效果*/
-        #logo{padding: 10px 0 0 0; text-align: center; height: 50px;background-color:#69C;font-size: 40px;font-family:"隶书";color:#FFC;}
-        /*输入框，搜索按钮部分*/
-        #write{margin-top: 10px;padding-left:100px;}
-        #write2{margin-top:30px;padding-left:100px;padding-top:20px;border-top:2px solid #C9F;}
+    #header{width: 100%;}/*设置满屏宽度*/
+    /*设置顶部栏效果*/
+    #info{height: 30px;background-color:#CCC;text-align:right;padding-top:5px;}
+    #nav-search{padding:5px 0 0 0;height: 30px;background-color:#9CF;}
+    #nav{height: 30px;background-color:#9CF;float: left;}
+    /*设置字体样式*/
+    #nav a{font-size:14px;display:block; float:left; margin-left:20px; margin-top:6px;color:#fff;letter-spacing:0.2em;
+    text-align:center;text-decoration:none;}
+    /*搜索框*/
+    #search{height: 30px;background-color:#9CF;float: right;}
+    /*系统名称效果*/
+    #logo{padding: 10px 0 0 0; text-align: center; height: 50px;background-color:#69C;font-size: 40px;font-family:"隶书";color:#FFC;}
+    /*输入框，搜索按钮部分*/
+    #write{margin-top: 10px;padding-left:100px;}
+    #write2{margin-top:30px;padding-left:100px;padding-top:20px;border-top:2px solid #C9F;}
 
-        /*表格位置设置*/
-        #main{width: 80%;margin-left:10%;}
-        #float-box{position: relative; width: 800px; min-height: 300px; margin: auto;border: 2px solid #cccccc;}
+    /*表格位置设置*/
+    #main{width: 80%;margin-left:10%;}
+    #float-box{position: relative; width: 800px; min-height: 300px; margin: auto;border: 2px solid #cccccc;}
     </style>
 </head>
 <body>
+<%@ include file="yardTop.jsp"%>
 <div id="header">
-    <%@ include file="yardTop.jsp"%>
     <div id="write">
         <c:if test="${empty errorMsg1}"><br/></c:if>
         <c:if test="${!empty errorMsg1}">

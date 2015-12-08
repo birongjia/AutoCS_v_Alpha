@@ -31,9 +31,13 @@ public class YardJumpController extends BaseController {
         return "yard/yardHistory";
     }
 
-    @RequestMapping("/success")
-    public String yardSuccess(HttpServletRequest request, HttpServletResponse response){
-        return "yard/yardSuccess";
+    @RequestMapping("/userSuccess")
+    public String yardUserSuccess(HttpServletRequest request, HttpServletResponse response){
+        return "yard/yardUserSuccess";
     }
 
+    @RequestMapping("/courseSuccess")
+    public String yardCourseSuccess(HttpServletRequest request, HttpServletResponse response){
+        return "yard/yardCourseSuccess";
+    }
 }

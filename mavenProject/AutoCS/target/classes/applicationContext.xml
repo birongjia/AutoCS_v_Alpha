@@ -75,9 +75,10 @@
             <tx:method name="save*" />
             <tx:method name="remove*" />
             <tx:method name="update*" />
-            <tx:method name="import*" />
         </tx:attributes>
     </tx:advice>
-    <tx:annotation-driven/>
+
+    <!--全注解配置事务-->
+    <!--<tx:annotation-driven/>-->
 
 </beans>

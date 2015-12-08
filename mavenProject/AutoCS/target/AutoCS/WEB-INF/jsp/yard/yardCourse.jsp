@@ -10,6 +10,12 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <style type="text/css">
+
+        body{background:url(image/background04.jpg) no-repeat 0 0;
+            background-size:100% 100%;margin:auto;}
+
+
+
         #header{width: 100%;}/*设置满屏宽度*/
         /*设置顶部栏效果*/
         #info{height: 30px;background-color:#CCC;text-align:right;padding-top:5px;}
@@ -26,17 +32,18 @@
         /*系统名称效果*/
         #logo{padding: 10px 0 0 0; text-align: center; height: 50px;background-color:#69C;font-size: 40px;font-family:"隶书";color:#FFC;}
         /*系名称栏设置*/
-        #major{width:15%;height:400px;padding:25px 0 0 0;text-align:center;background-color:#EAEAEA;float:left;margin: auto;border: 1px         solid #cccccc;}
-        #major a{font-size:16px;}
+        #major{width:22%;height:500px;padding:25px 0 0 0;text-align:center;background-color:#EAEAEA;float:left;margin: auto;border: 3px         solid #cccccc;border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}
+        #major a{font-size:18px;color:#00C;}
         #major a:hover{color:#F06;}
+        #major input{float:right;border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;background:#FFC;}
         /*设置按钮安放位置*/
-        #button1{width:40%;height:50px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;}
-        #button1 input{margin-left:50px;}
+        #button1{width:60%;height:50px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;}
+        /* #button1 input{margin-left:50px;}*/
         #button2{width:60%;height:50px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;border-top:2px solid #9FF;}
         #button2 input{margin-left:50px;}
         /*暂时放空的地方*/
-        #sth{width:60%;height:60px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;}
-        #sth a{font-size:20px;font-family:Arial;padding:10px 100px 0 0;}
+        #sth{width:60%;height:60px;padding:50px 0 20px 50px;text-align:left;float:left;margin:auto;}
+        #sth a{font-size:20px;font-family:Arial;}
         /*放置时间选择框*/
         #time{width:30%;height:250px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;}
         #time1{width:20%;height:100px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;}
@@ -48,54 +55,82 @@
 <body>
 <div id="header">
     <%@ include file="yardTop.jsp"%>
-    <div id="major">
-        <a href="#">计算机科学与技术</a><br/><br/>
-        <a href="#">数          学</a><br/><br/>
-        <a href="#">信  息  安   全</a><br/><br/>
-        <a href="#">软  件  工   程</a><br/><br/>
-        <a href="#">计 算 机 实 验 班</a><br/><br/>
-        <a href="#">数 学  实 验 班 </a><br/><br/>
-        <a href="#">数 理  综 合 班</a><br/><br/>
+
+
+
+    <div  style="margin-left:30.5%;">
+        <input type="submit" value="查看报课" style="background:#9CF;border-top-left-radius: 10px;border-top-right-radius: 10px;                                 border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;" value="开始报课"/>
     </div>
-    <div id=button1>
-        <input type="submit" name="button" value="开始报课"/>
-        &nbsp;<input type="submit" name="button" value="查看报课"/>
-    </div>
-    <div id=button2>
-        <br/>
-        <c:if test="${empty errorMsg1}"><br/></c:if>
-        <c:if test="${!empty errorMsg1}">
-            <div style="color:red">${errorMsg1}</div>
-        </c:if>
-        <form action="${context}/yard/course/upload.html" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" value="导入课表"/>
-            <label>选择学期：<select name="semester">
-                <option value="0" selected="selected">选择</option>
-                <option value="1" id="1"><%=Calendar.getInstance().get(Calendar.YEAR)%>01</option>
-                <option value="2" id="2"><%=Calendar.getInstance().get(Calendar.YEAR)%>02</option>
-            </select></label>
-            <input type="submit" value="确  定"/>
+
+
+
+
+    <br/>
+    <div>
+        <form action="${context}/yard/course/start.html" method="post" enctype="multipart/form-data">
+
+
+
+
+
+            <div id="major">
+                <a>计算机实验班</a><br/><input type="file" name="files"/><br/><br/>
+                <a>计算机卓越班</a><br/><input type="file" name="files"/><br/><br/>
+                <a>计算机科学与技术</a><br/><input type="file" name="files"/><br/><br/>
+                <a>软件工程</a><br/><input type="file" name="files"/><br/><br/>
+                <a>数学实验班</a><br/><input type="file" name="files"/><br/><br/>
+                <a>数学</a><br/><input type="file" name="files"/><br/><br/>
+                <a>网络工程</a><br/><input type="file" name="files"/><br/><br/>
+                <a>信息安全</a><br/><input type="file" name="files"/>
+            </div>
+
+
+
+
+            <div id="button1">
+
+
+
+                <div style="margin-left:7%;">
+                    <input type="submit" style="background:#9CF;border-top-left-radius: 10px;border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;" value="开始报课"/>
+                </div>
+
+
+
+
+                <br/>
+                <c:if test="${empty errorMsg1}"><br/></c:if>
+                <c:if test="${!empty errorMsg1}">
+                    <div style="color:red">${errorMsg1}</div>
+                </c:if>
+                <label>选择学期：<select name="semester">
+                    <option value="0" selected="selected" >选择</option>
+                    <option value="<%=Calendar.getInstance().get(Calendar.YEAR)%>01" id="1"><%=Calendar.getInstance().get(Calendar.YEAR)%>01</option>
+                    <option value="<%=Calendar.getInstance().get(Calendar.YEAR)%>02" id="2"><%=Calendar.getInstance().get(Calendar.YEAR)%>02</option>
+                </select></label>
+            </div>
+            <br>
+            <%--<div id=sth>--%>
+                <%--<a> <img src="http://t04.pic.sogou.com/02180dee779e8a8c-c6d81a1366188f77-b687d8000eb0132f4db7ec0ce3773c39.jpg" width="70" height="70"/>开始/截止报课设置</a>--%>
+            <%--</div>--%>
+            <br><br><br><br><br>
+            <div id=time>
+                <c:if test="${empty errorMsg2}"><br/></c:if>
+                <c:if test="${!empty errorMsg2}">
+                    <div style="color:red">${errorMsg2}</div>
+                </c:if>
+                <label>开始报课：<input name="beginCourse" type="date"/></label><br/><br/>
+                <label>截止报课：<input name="endCourse" type="date"/></label><br/><br/>
+                <input style="background:#CFF;border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;" type="reset" value="重置"/>
+            </div>
         </form>
     </div>
-    <div id=sth>
-        <img src="http://t04.pic.sogou.com/02180dee779e8a8c-c6d81a1366188f77-b687d8000eb0132f4db7ec0ce3773c39.jpg" width="70"
-             height="70"/>
-        <a>开始/截止报课设置</a>
-    </div>
-    <div id=time>
-        <form id="form" action="${context}/yard/course/setTime.html" method="post">
-            <label>开始报课：<input name="beginCourse" type="date"/></label><br/><br/>
-            <label>截止报课：<input name="endCourse" type="date"/></label><br/><br/>
-            <label>开始审核：<input name="beginCheck" type="date"/></label><br/><br/>
-            <label>审核截止：<input name="endCheck" type="date"/></label><br/><br/>
-        <input  type="submit" value="确定"/>&nbsp;&nbsp;
-        <input type="reset" value="重置"/>
-        </form>
-    </div>
+</div>
+<!--
     <div id=time1>
         <img src="http://t03.pic.sogou.com/02180dee779e8a8c-9a2dfd51a14e3358-3bc24e914a3291e6ecba8a76c5e5bac1.jpg"/>
     </div>
-
-</div>
+    -->
 </body>
 </html>
