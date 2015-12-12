@@ -12,10 +12,12 @@
 /*搜索框*/
 #search{height: 30px;background-color:#9CF;float: right;}
 /*系统名称效果*/
-#logo{width:100%;padding: 10px 0 0 0; text-align: center; height: 80px;background-color:#69C;font-size: 40px;font-family:"隶书";color:#FFC;}
-#go{width:30%;margin:auto;text-align:center;height:400px;float:right;border:2px solid #3FF;padding:100px 0 0 0;}
-#type1{width:100%;height:50px;text-align:center;margin:auto;padding:20px 0 0 20px;}
-#type2{width:100%;height:50px;text-align:center;margin:auto;padding:10px 0 0 20px;}
-#type3{width:100%;height:50px;text-align:center;margin:auto;padding:20px 0 0 0;}
-#type3 input{margin-left:30px;}
-#form{float:left;}
+#logo{width:100%;padding: 10px 0 0 0; text-align: center; height: 50px;background-color:#69C;font-size: 40px;font-family:"隶书";color:#FFC;}
+
+#time{width:50%;height:100px;padding:20px 0 0 0;float:left;text-align:center;}
+#button{width:40%;height:80px;padding:40px 0 0 0;float:left;text-align:left;}
+/*表格位置*/
+#tabel{width:75%;height:450px;margin-left:150px;margin-top:150px;border:2px solid #666;text-align:center;}
+/*设置表格下一页按钮位置*/
+#button2{width:100%;height:50px;padding:10px 0 0 0;margin:auto;text-align:center;float:left;}
+#button2 input{margin-left:30px;}

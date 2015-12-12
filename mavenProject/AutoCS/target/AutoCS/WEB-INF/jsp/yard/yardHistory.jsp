@@ -8,36 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <style type="text/css">
-        #header{width: 100%;}/*设置满屏宽度*/
-        /*设置顶部栏效果*/
-        #info{height: 30px;background-color:#CCC;text-align:right;padding-top:5px;}
-        #info a:hover{color:#FFF;}
-        #nav-search{padding:5px 0 0 0;height: 30px;background-color:#9CF;}
-        #nav{height: 30px;background-color:#9CF;float: left;}
-        /*设置字体样式*/
-        #nav a{font-size:14px;display:block; float:left; margin-left:20px; margin-top:6px;color:#fff;letter-spacing:0.2em;
-            text-align:center;text-decoration:none;}
-        #nav a:hover{color:#d00;
-            background:#fff;}
-        /*搜索框*/
-        #search{height: 30px;background-color:#9CF;float: right;}
-        /*系统名称效果*/
-        #logo{padding: 10px 0 0 0; text-align: center; height: 50px;background-color:#69C;font-size: 40px;font-family:"隶书";color:#FFC;}
-        /*系名称栏设置*/
-        #major{width:15%;height:400px;padding:25px 0 0 0;text-align:center;background-color:#EAEAEA;float:left;margin: auto;border: 1px         solid #cccccc;}
-        #major a{font-size:16px;}
-        #major a:hover{color:#F06;}
-        /*设置按钮安放位置*/
-        #button1{width:40%;height:50px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;}
-        #button2{width:60%;height:50px;padding:10px 0 0 50px;text-align:left;float:left;margin:auto;border-top:2px solid #9FF;}
-        #button2 input{margin-left:50px;}
-        #button2 a{margin-left:50px;}
-        /*表格位置*/
-        #tabel{width:70%;min-height:400px;margin:auto;float:left;border:2px solid #999;}
-        #button{width:100%;height:50px;padding:10px 0 0 0;margin:auto;text-align:center;float:left;}
-        #button input{margin-left:30px;}
-    </style>
+    <link href="${context}/res/css/style/yardHistory.css" rel="stylesheet" type="text/css"/>
     <title>教学办之历史记录</title>
 </head>
 <body>

@@ -3,39 +3,36 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
     String context = request.getContextPath();
-    request.setAttribute("context",context);
+        request.getSession().setAttribute("context",context);
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link href="res/css/main.css" rel="stylesheet" type="text/css"/>
-    <%--<style type="text/css">--%>
-        <%--#header{width: 100%;}/*设置满屏宽度*/--%>
-        <%--/*设置顶部栏效果*/--%>
-        <%--#info{height: 30px;background-color:#CCC;text-align:right;padding-top:5px;}--%>
-        <%--#info a:hover{color:#FFF;}--%>
-        <%--#nav-search{padding:5px 0 0 0;height: 30px;background-color:#9CF;}--%>
-        <%--#nav{height: 30px;background-color:#9CF;float: left;}--%>
-        <%--/*设置字体样式*/--%>
-        <%--#nav a{font-size:14px;display:block; float:left; margin-left:20px; margin-top:6px;color:#fff;letter-spacing:0.2em;--%>
-            <%--text-align:center;text-decoration:none;}--%>
-        <%--#nav a:hover{color:#d00;--%>
-            <%--background:#fff;}--%>
-        <%--/*搜索框*/--%>
-        <%--#search{height: 30px;background-color:#9CF;float: right;}--%>
-        <%--/*系统名称效果*/--%>
-        <%--#logo{width:100%;padding: 10px 0 0 0; text-align: center; height: 50px;background-color:#69C;font-size: 40px;font-family:"隶书";color:#FFC;}--%>
-        <%--#go{width:30%;margin:auto;text-align:center;height:300px;float:right;border:2px solid #3FF;padding:100px 0 0 0;}--%>
-        <%--#type1{width:100%;height:50px;text-align:center;margin:auto;padding:20px 0 0 20px;}--%>
-        <%--#type2{width:100%;height:50px;text-align:center;margin:auto;padding:10px 0 0 20px;}--%>
-        <%--#type3{width:100%;height:50px;text-align:center;margin:auto;padding:20px 0 0 0;}--%>
-        <%--#type3 input{margin-left:30px;}--%>
-    <%--</style>--%>
+    <meta charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
     <title>自动排课系统</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./res/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./res/css/style/login.css" rel="stylesheet">
+    <link href="./res/css/style/main.css" rel="stylesheet">
+
+    <%--<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->--%>
+    <%--<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->--%>
+    <%--<script src="../../assets/js/ie-emulation-modes-warning.js"></script>--%>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>-->
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="header">
@@ -45,18 +42,28 @@
     <div id="logo">
         福州大学数计学院自动排课系统
     </div>
-    <div id=go>
-        <c:if test="${empty errorMsg}"><br/></c:if>
+    <div id = go>
         <c:if test="${!empty errorMsg}">
             <div style="color:red">${errorMsg}</div>
         </c:if>
-        <form action="${context}/login.html" method="post">
-            <div id=type1><label>用户名：<input type="text" name="userName"></label></div>
-            <div id=type2><label>密　码：<input type="password" name="password"></label></div>
-            <label><input id="userType1" name="userType" type="radio" value="1" checked="checked"/>教学办</label>&nbsp
-            <label><input id="userType2" name="userType" type="radio" value="2"/>系负责人</label>&nbsp
-            <label><input id="userType3" name="userType" type="radio" value="3"/>教师</label>
-            <div id=type3><input type="submit" value="登  录"><input type="reset" value="重  置"></div>
+        <form class="form-signin"  action="${context}/login.html" method="post">
+            <label for="inputUserName" class="sr-only">用户名：</label>
+            <input type="text" id="inputUserName" name="userName" class="form-control" placeholder="userName" required autofocus>&nbsp
+            <label for="inputPassword" class="sr-only">密  码：</label>
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+            <div class="checkbox">
+                <label><input id="userType1" name="userType" type="radio" value="1" checked="checked"/>教学办</label>&nbsp
+                <label><input id="userType2" name="userType" type="radio" value="2"/>系负责人</label>&nbsp
+                <label><input id="userType3" name="userType" type="radio" value="3"/>教师</label>
+                <!--<label>-->
+                <!--<input type="checkbox" value="remember-me"> Remember me-->
+                <!--</label>-->
+            </div>
+            <div style="width: 100%">
+                <div style="float:left; width: 50%">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">登  录</button></div>
+                <div style="float:left; width: 50%">
+                    <button class="btn btn-lg btn-primary btn-block" type="reset">重  置</button></div></div>
         </form>
     </div>
 </div>

@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%
-    String context = request.getContextPath();
-    request.setAttribute("context",context);
-%>
 <div id="info">
     <c:if test="${empty loginTeacher}">
         <script>
