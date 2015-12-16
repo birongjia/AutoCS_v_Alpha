@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<style type="text/css">
+		#header{width: 100%;}/*设置满屏宽度*/
+
+        body{background:url(image/background07.jpg) no-repeat 0 0;
+            background-size:100% 100%;margin:auto;}
+		/*设置顶部栏效果*/
+		#info{height: 30px;background-color:#CCC;text-align:right;padding-top:5px;}
+		#nav-search{padding:5px 0 0 0;height: 30px;background-color:#9CF;}
+		#nav{height: 30px;background-color:#9CF;float: left;}
+		/*设置字体样式*/
+	   #nav a{font-size:14px;display:block; float:left; margin-left:20px; margin-top:6px;color:#fff;letter-spacing:0.2em;
+	   text-align:center;text-decoration:none;}
+	   /*搜索框*/
+		#search{height: 30px;background-color:#9CF;float: right;}
+		/*系统名称效果*/
+		#logo{padding: 10px 0 0 0; text-align: center; height: 50px;background-color:#69C;font-size: 40px;font-family:"隶书";color:#FFC;}
+		/*输入框，搜索按钮部分*/
+		#write{margin-top: 10px;padding-left:100px;}
+
+        #write input{ height:20px;width:170px;border-bottom-right-radius:10px;border-bottom-left-radius:10px;border-top-left-radius:10px;
+        border-top-right-radius:10px;}
+
+
+		#write2{margin-top:30px;padding-left:100px;padding-top:20px;border-top:2px solid #C9F;}
+
+        #write2 input{ height:20px;width:170px;border-bottom-right-radius:10px;border-bottom-left-radius:10px;border-top-left-radius:10px;
+            border-top-right-radius:10px;}
+
+		/*表格位置设置*/
+		#main{width: 80%;margin-left:10%;}
+		#float-box{position: relative;min-width: 900px; min-height: 500px; margin-top: 30px;border: 3px solid #cccccc;}
+	 </style>
+</head>
+<body>
+		<div id="header">
+			<div id="info">
+				<a>xx管理员，欢迎您!</a>&nbsp&nbsp&nbsp
+                <a href="#">退出登录</a>&nbsp
+                |&nbsp <a href="#">修改信息</a>
+			</div>
+          
+			<div id="nav-search">		
+				<div id="nav">
+					<a href="#">首页</a> 
+					<a>账号管理</a>
+					<a>报课管理</a>
+					<a>历史记录</a>
+
+				</div>
+				<div id="search">
+					<input type="text">
+						<input type="submit" value="搜索">
+				</div>
+			</div>
+			<div id="logo">
+				福州大学数计学院自动排课系统
+			</div>
+			<div id="write">
+				<form>
+					<label>工 号：</label><input  type="text">&nbsp&nbsp&nbsp;
+                    <label>用户名：</label><input type="text">&nbsp&nbsp&nbsp;
+                     <label>密 码：</label><input type="text">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;
+                     <input style="height:60px;width:60px;border-bottom-right-radius:50%;border-bottom-left-radius: 50%;border-top-left-radius: 50%;
+                      border-top-right-radius:50%;background-color:lightskyblue;"  type="submit" value="添  加">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;
+                     <input style="height:60px;width:60px;border-bottom-right-radius:50%;border-bottom-left-radius: 50%;border-top-left-radius: 50%;
+                      border-top-right-radius:50%;background-color:lightskyblue;" type="submit" value="上传附件">
+				</form>
+			</div>
+		     <div id="write2">
+              <form>
+					<label>所属系：</label><input type="text">&nbsp&nbsp&nbsp;
+                   
+                    <label>用户名：</label><input type="text">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;
+                     <input style="height:50px;width:50px;border-bottom-right-radius:50%;border-bottom-left-radius: 50%;border-top-left-radius: 50%;
+                      border-top-right-radius:50%;background-color:lightskyblue;" type="submit" value="查  询">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;
+                </form>
+              </div>
+		<div id="main">
+			<div id="float-box">
+				未找到信息
+			</div>
+		</div>
+</body>
+</html>

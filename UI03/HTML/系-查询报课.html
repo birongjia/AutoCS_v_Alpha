@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<style type="text/css">
+		#header{width: 100%;}/*设置满屏宽度*/
+		/*设置顶部栏效果*/
+		#info{height: 30px;background-color:#CCC;text-align:right;padding-top:5px;}
+		#info a:hover{color:#FFF;}
+		#nav-search{padding:5px 0 0 0;height: 30px;background-color:#9CF;}
+		#nav{height: 30px;background-color:#9CF;float: left;}
+		/*设置字体样式*/
+	   #nav a{font-size:14px;display:block; float:left; margin-left:20px; margin-top:6px;color:#fff;letter-spacing:0.2em;
+	   text-align:center;text-decoration:none;}
+	   #nav a:hover{color:#d00;
+       background:#fff;}
+	   /*搜索框*/
+		#search{height: 30px;background-color:#9CF;float: right;}
+		/*系统名称效果*/
+		#logo{width:100%;padding: 10px 0 0 0; text-align: center; height: 50px;background-color:#69C;font-size: 40px;font-family:"隶书";color:#FFC;}
+		
+	     #time{width:50%;height:100px;padding:20px 0 0 0;float:left;text-align:center;}
+		 
+	    #button{width:40%;height:80px;padding:10px 0 0 0;float:left;text-align:left;}
+		/*表格位置*/
+		#tabel{width:75%;height:450px;margin-left:150px;margin-top:150px;border:2px solid #666;text-align:center;}
+		/*设置表格下一页按钮位置*/
+	    #button2{width:100%;height:50px;padding:10px 0 0 0;margin:auto;text-align:center;float:left;}
+		#button2 input{margin-left:30px;}
+	 </style>
+<title>系负责人之报课管理-查询</title>
+</head>
+
+<body>
+    <div id="header">
+			<div id="info">
+				<a>xx管理员，欢迎您!</a>&nbsp&nbsp&nbsp
+                <a href="#">退出登录</a>&nbsp
+                |&nbsp <a href="#">修改信息</a>
+			</div>
+            <div id="nav-search">		
+				<div id="nav">
+					<a href="#">首页</a> 
+	
+					<a href="#">报课管理</a>
+				    	<a href="#">查询信息</a>
+                    </div>
+            	<div id="search">
+					<input type="text">
+						<input type="submit" value="搜索">
+				</div>
+			</div>
+            <div id="logo">
+				福州大学数计学院自动排课系统
+			</div>
+           <div id="time">
+            <p>报课截止时间：XXXX年XX月XX日  XX：XX</p>
+           <p>审核截止时间：XXXX年XX月XX日  XX：XX</p>
+            </div>
+            <div id="button"> 
+            查询报课信息：
+           <p>
+            教工号：<input type="text" name="cx"/>
+            <input type="submit" name="button" value="确  定"/> </p>
+            <p>
+            教师名：<input type="text" name="cx"/>
+            <input type="submit" name="button" value="查看汇总表格"/></p>
+            </div> 
+           <div id="tabel">此处显示表格</div>
+             <div id=button2>
+             <input type="submit" name="button" value="下一页"/>
+            <input type="submit" name="button" value="返回"/>
+            </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<div id="gpic" style="overflow:hidden; width:400px; height:182px;">
+
+<table border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td id="gpic1" valign="top" align="center"><table width="974" border="0" align='center' cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="200" bgcolor="#FF00FF"> <img src="http://d2.sina.com.cn/pfpghc2/201511/18/db84318cdce949a5b3152a2b1be0a262.jpg"></td>
+          <td valign='top' bgcolor="#00FFFF"> <img src="http://d2.sina.com.cn/pfpghc2/201511/18/db84318cdce949a5b3152a2b1be0a262.jpg"></td>
+          <td valign='top' bgcolor="#FFFF00"> <img src="http://d2.sina.com.cn/pfpghc2/201511/18/db84318cdce949a5b3152a2b1be0a262.jpg"></td>
+          <td valign='top' bgcolor="#0000FF"> <img src="http://d2.sina.com.cn/pfpghc2/201511/18/db84318cdce949a5b3152a2b1be0a262.jpg"></td>
+          <td valign='top' bgcolor="#00FF00"> <img src="http://d2.sina.com.cn/pfpghc2/201511/18/db84318cdce949a5b3152a2b1be0a262.jpg"></td>
+          <td valign='top' bgcolor="#FF0000"> <img src="http://d2.sina.com.cn/pfpghc2/201511/18/db84318cdce949a5b3152a2b1be0a262.jpg"></td>
+        </tr>
+        <tr>
+          <td height="24" align="center">文字信息</td>
+          <td align="center"></td>
+          <td align="center">文字信息</td>
+          <td align="center">文字信息</td>
+          <td align="center">文字信息</td>
+          <td align="center">文字信息</td>
+        </tr>
+      </table></td>
+    <td id="gpic2" valign="top"></td>
+  </tr>
+</table>
+</div>
+<script>
+var speed=30
+gpic2.innerHTML=gpic1.innerHTML
+function Marquee(){
+if(gpic2.offsetWidth-gpic.scrollLeft<=0)
+gpic.scrollLeft-=gpic1.offsetWidth
+else{
+gpic.scrollLeft++
+}
+}
+var MyMar=setInterval(Marquee,speed)
+gpic.onmouseover=function() {clearInterval(MyMar)}
+gpic.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+</script>
+<body>
+</body>
+</html>

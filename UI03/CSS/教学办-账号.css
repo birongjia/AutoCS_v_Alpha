@@ -1,0 +1,82 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*定义顶部栏*/
+#top,#vi,#nav,#main,#bt{
+	width:779px;
+	margin:0px auto;
+	}
+	#top,#bt{background:#CCC;
+	}
+	#top{height:18px;
+		padding-top:5px;
+		text-align:right;
+		color:#FFF;}
+	#top_txt{margin-right:5px;}
+    #top_txt a{color:#009;
+	text-decration:none;
+	}
+	#top_txt a:visited{color:#FFF;}
+	#top_txt a:hover{color:#ddd;}
+	
+	/*定义Banner效果*/
+	#vi{height:85px;
+	background:#06F url(../img/vi.jpg)no-repeat;}
+	#tt{margin-right:120px;
+	paddig-right:40px;
+	text-indent:-40px;
+	text-algin:left;
+	line-height:3em;
+	font-size:40px;
+	font-family:"隶书";
+	font-weight:bold;d}
+	
+	/*设置输入框和按钮*/
+#write{height:30px;
+       margin:0px 10px 0px 0px;
+	   float:left;
+	   
+	   padding:20px 10px ;
+	   }
+	
+	
+	
+/*定义背景框样式，各个标题大小*/
+#nav{height:28px;
+     text-align:right;
+	 background:#CCF;
+	 width:779px;
+	 margin:0px auto;
+	  }
+	 /*定义字体样式*/
+#nav a{font-size:14px;
+      display:block;
+	  float:left;
+	  margin-left:20px;
+	  margin-top:6px;
+	  color:#fff;
+	  letter-spacing:0.2em;
+	  text-align:center;
+	  text-decoration:none;}
+a#index{clear:left;}
+#nav a:hover{color:#d00;
+       background:#fff;}
+#yanse{background:#3F6;}
+	   
+	   
+	   /*设置搜索框和搜索框按钮*/
+#search{padding-top:2px;
+         padding-right:10px;}
+#search input{height:14px;}
+#search .btn{height:20px;}
+
+
+
+/*设置页面垂直滚动条*/
+html,body{scrollbar-face-color:#98a363;
+           scrollbar-highlight-color:#e3e69d;
+		   scrollbar-shadow-color:#999;
+		   scrollbar-3dlight-color:#000;
+		   scrollbar-arrow-color:#f4f4f0;
+		   scrollbar-darkshadow-color:#666;}
+
